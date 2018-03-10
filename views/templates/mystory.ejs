@@ -1,0 +1,36 @@
+<div class="container">
+<div class="row"><div class = "col"><h2>Hello <%= users[0].name %></h2></div><div class = "col"><button id='Refreshstory' class="btn btn-outline-success my-2 my-sm-0" onclick="loadtwo()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALPSURBVGhD7ZrLq01RHMevVwxJ5DmQx8AjE+XxH5iIkSR5JuYIyVAeMfRmIo8yJyMzj4kBEaKMvUVJnp/PvX61Wp3Lvbe13bVzP/Wpc9Y57bW+55y192+vdbqGGKKdzMCtPQ/biyFe4E/cYUNbuYGGCHdhK5mKTzENsxtbyTR8hmmYvdhKpuNzTMPsw+oZiYtxGx7CU3gd0yC6H6tkHjrod5gPujd3YjX40zmH37HTYHvzG67FKliFH7HTIG/jRTyG1zB/fSMOOsPQs88PTAf4ADfgeAwW4itMQ6zHKjBEGuAN+gkPx5QF+BLTEOuwClZi+k08wpmY4+TPQ1QzJ5zYnzANMRY7kZ5yDbEGq+E8xuBe4yzsDefJPTTEahtqYT46qAjipP4bhlne87DfeGGd1POwLKcxQtzHfGKXxBBX8Xj3s4J44PfYn29joIxAQ9jP29/Pi7EEI4Q/r/Q6UZrR+Bmjv6VYDAvAOPAtGxrmJkZ/9l2MwxgHvmxDw5zB6M8KuhgnMQ581IaGcfDRn30X418HsdBsJMgRjANfsKFhrmD0d9CGUmzHOPBdGxrmDkZ/RdfFlmEc+AuOwaaYiGkFsQiLkV4QvVgVvUhlbMII4e1B8b5OoCFGdT9rBj+whxhBik70wAJuoCEsHPtSDWzBCOHPay5WgyW8g7Kk/1OY2ZjWc14Uq8GbqXTierPViXH4BON9H3AKVoG3tWkIb3u9/c2Zg48x3uey0gqsAhcY8hAuRKQ4sTejpXq8T/dgFbjUk4ZwKcgloWACeopNz07qN2EIl5oGHZeE0hDq4py10yW0KshfV+dENT+nfE70xa94FidjNbgj1WmwnXQFxgXvqq4TKW4V5IP2lOugD6AFoLVTkyVOMdzESYO4yePCXivJ14bdfnMbrpW48ZmGcWPUDdJWkp8A3LJuLf5ZwBD+ecA/EbQaz1atDzHEf0hX1y+B7Smo1uuFHQAAAABJRU5ErkJggg=="></button></div></div>
+	<div class="row">
+		<div class = "col">
+		<h3>New Story</h3>
+	    <form id="myStory">
+	        <div class="form-group">
+	            <input id='ms_title' type="text" placeholder="Enter Post Title:" name="title">
+	        </div>
+	        <div class="form-group">
+	            <textarea rows="10" id='ms_post' type="text" placeholder="Enter Post:" name="post" style="min-width: 100%"></textarea>
+	        </div>    
+	    </form>
+	    <button class="btn btn-primary" onclick="loadNewPost()">Submit Story</button>
+		</div>
+		<div class = "col" id = "stories" >
+		<h3>Stories </h3>
+		<div style="height: 400px;max-height: 96%;overflow: auto;background: ivory;">
+		<br />
+		    <% for(i=posts.length-1; i >= 0; i--){ %>
+			<h4><%= posts[i].title %></h4>
+			<p><%= posts[i].post %></p>
+			<button id='delete' class="btn btn-outline-success my-2 my-sm-0" onclick="editapost('<%= posts[i]._id %>')">Edit</button>
+			<button id='delete' class="btn btn-outline-success my-2 my-sm-0" onclick="deleteapost('<%= posts[i]._id %>')">Delete</button>
+			<br />
+			<hr>
+			<% } %>
+		</div>
+	    </div>
+	</div>
+</div>
+<script>
+	(function () {
+		setLoginInfo('<%= users[0].username %>', '<%= users[0].email %>', '<%= users[0].name %>')
+	}());
+</script>
