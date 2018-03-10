@@ -29,11 +29,32 @@
         
     }
 
+    function determinelogin(){
+        if(typeof currentUser == "undefined"){
+            console.log('HEEHEEHEE'); 
+            $('#loggedininfo').hide();
+        } else {
+            console.log('LOLOLOL'); 
+            $('#loggedininfo').show();
+        }
+    };
+
+    (function(){
+        determinelogin();
+    })();
+
+    $('#content').change(function(){
+        determinelogin()
+    })
+
     function homeNav(){
-        if(typeof currentUser == "undefined")
+        if(typeof currentUser == "undefined"){
             $('body').load('/');
-        else
-            $('#content').load('mystory/'+ currentUser);
+            determinelogin();
+        }
+        else {
+            loadMystory()
+        }
     }
 
     function login(){
@@ -49,6 +70,7 @@
         $('#loginuser').text(currentUser);
         $('#ddname').text(currentUserFullName);
         $('#ddemail').text(currentUserEmail);
+        determinelogin()
     }
     
     function newNav() {
@@ -72,6 +94,7 @@
     function loadMystory(){
         $('#content').load('mystory/'+ currentUser);
         changeJumbotron('My Story Homepage', 'Write Down your thoughts below. Read some of your old stories as well')
+        determinelogin()
     }
 
     function loadone(){
