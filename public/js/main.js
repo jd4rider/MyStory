@@ -29,6 +29,13 @@
         
     }
 
+    function homeNav(){
+        if(typeof currentUser == "undefined")
+            $('body').load('/');
+        else
+            $('#content').load('mystory/'+ currentUser);
+    }
+
     function login(){
         $('#content').load('signin/'+ $('#username').val() + '/' + $('#password').val());
     }
