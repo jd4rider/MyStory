@@ -30,11 +30,11 @@
     }
 
     function determinelogin(){
-        if(typeof currentUser == "undefined"){
-            console.log('HEEHEEHEE'); 
+        if(typeof currentUser == "undefined"){ 
+            $("#loginsignup").show();
             $('#loggedininfo').hide();
         } else {
-            console.log('LOLOLOL'); 
+            $("#loginsignup").hide();
             $('#loggedininfo').show();
         }
     };
